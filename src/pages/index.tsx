@@ -2,11 +2,15 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import { Card } from 'antd'
+import { Card, Modal } from 'antd'
+import { useState } from 'react'
+import { TestRandom } from '@/features/TestRandom'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const [randomQuestions, showRandomQuestions] = useState(false);
+  
   return (
     <>
       <Head>
@@ -22,10 +26,21 @@ export default function Home() {
             <p>Здесь вы можете создать тест для проверки булевых функций</p>
           </Card>
 
-          <Card title="Пройти тест" className={styles['ContentCard']}>
+          <Card title="Пройти тест" onClick={() => showRandomQuestions(true)} className={styles['ContentCard']}>
             <p>Тест выдаст рандомные вопросы</p>
           </Card>
         </main>
+
+        {
+          randomQuestions && <Modal open={randomQuestions} title="Тест на знание булевых функций" onOk={() => {
+            showRandomQuestions(false);
+          }} onCancel={() => {
+            showRandomQuestions(false);
+          }}>
+            <TestRandom />
+          </Modal>
+        }
+
         <footer className={styles['Footer']}>
           @ 2023
         </footer>
