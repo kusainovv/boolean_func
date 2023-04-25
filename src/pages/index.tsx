@@ -5,12 +5,14 @@ import styles from '@/styles/Home.module.css'
 import { Card, Modal } from 'antd'
 import { useState } from 'react'
 import { TestRandom } from '@/features/TestRandom'
+import { TestYourOwn } from '@/features/TestYourOwn'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [randomQuestions, showRandomQuestions] = useState(false);
-  
+  const [yourOwnQuestions, showYourOwnQuestions] = useState(false);
+
   return (
     <>
       <Head>
@@ -22,7 +24,7 @@ export default function Home() {
       <main className={`${styles.main} ${inter.className}`}>
         <header className={styles['Header']}>boolean function</header>
         <main className={styles['Content']}>
-          <Card title="Создать тест" className={styles['ContentCard']}>
+          <Card title="Создать тест" onClick={() => showYourOwnQuestions(true)} className={styles['ContentCard']}>
             <p>Здесь вы можете создать тест для проверки булевых функций</p>
           </Card>
 
@@ -38,6 +40,16 @@ export default function Home() {
             showRandomQuestions(false);
           }}>
             <TestRandom />
+          </Modal>
+        }
+
+        {
+          yourOwnQuestions && <Modal open={yourOwnQuestions} title="Создание теста" onOk={() => {
+            showYourOwnQuestions(false);
+          }} onCancel={() => {
+            showYourOwnQuestions(false);
+          }}>
+            <TestYourOwn />
           </Modal>
         }
 

@@ -51,11 +51,11 @@ export const TestRandom = () => {
                         <Button type="primary" onClick={() => {
                             isRightAnswer(true, question);
                             setCurrentAnswer(currentAnswer + 1);
-                        }}>True</Button>
+                        }} className={styles['Btn']}>True</Button>
                         <Button type="primary" onClick={() => {
                             isRightAnswer(false, question);
                             setCurrentAnswer(currentAnswer + 1);
-                        }} className={styles['Btn']}>False</Button>
+                        }}>False</Button>
                     </div>
                     : null
             })
