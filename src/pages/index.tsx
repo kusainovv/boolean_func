@@ -9,6 +9,16 @@ import { TestYourOwn } from '@/features/TestYourOwn'
 
 const inter = Inter({ subsets: ['latin'] })
 
+/**
+ * Функция Home
+ * создает визуально представление интерфейса
+ * все видимые элементы на странице будут видны после ключегого слово return
+ * в данной функции, мы создаем два локальных стэйта для
+ * показа или случайных вопросов, или вопросов написанным юзером
+ * в тэге Head мы обьявляем метаданные
+ * в интерфейсе, мы увидем две карточки созданные благодря фреймоворку
+ * для использования графических компонентов - antd
+ */
 export default function Home() {
   const [randomQuestions, showRandomQuestions] = useState(false);
   const [yourOwnQuestions, showYourOwnQuestions] = useState(false);
